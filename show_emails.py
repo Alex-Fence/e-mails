@@ -1,21 +1,16 @@
-# Ниже представлен пример кода, который подключается к почтовому ящику,
-# ищет письма с датой меньше 01/01/2024 и удаляет их
-
 import imaplib
 import email
 from email.header import decode_header
-
+from datetime import datetime, timedelta
 
 # Настройки подключения
 IMAP_SERVER = 'infra-mail.ru'  # Замените на ваш IMAP-сервер
 USERNAME = 'kalyuzhny.a@complex1.ru'  # Ваш email
 PASSWORD = '123Qazxsw'  # Ваш пароль
 
-# Период для фильтрации писем (например, последние 30 дней)
-#days = 30
-# date_since = (datetime.now() - timedelta(days=days)).strftime("%d-%b-%Y")
+
 # Дата для фильтрации писем (до 2024 года)
-date_until = "01-Feb-2024"
+date_until = "01-Jan-2024"
 
 # Подключение к IMAP-серверу
 mail = imaplib.IMAP4_SSL(IMAP_SERVER)
@@ -24,6 +19,7 @@ mail.login(USERNAME, PASSWORD)
 # Выбор папки "Входящие"
 mail.select("inbox")
 
+# Поиск писем до указанной даты
 status, messages = mail.search(None, f'BEFORE {date_until}')
 
 # Получение идентификаторов писем
@@ -50,23 +46,15 @@ for mail_id in mail_ids:
         from_ = msg.get('From')
         date_ = msg.get('Date')
 
-        print(f"Удаление письма:")
         print(f"Тема: {subject_str}")
         print(f"От: {from_}")
         print(f"Дата: {date_}")
-
-        # Установка флага \Deleted для удаления письма
-        mail.store(mail_id, '+FLAGS', '\\Deleted')
+        print("------------")
     else:
         print("Тема: (нет темы)")
         print(f"От: {msg.get('From')}")
         print(f"Дата: {msg.get('Date')}")
-
-        # Установка флага \Deleted для удаления письма
-        mail.store(mail_id, '+FLAGS', '\\Deleted')
-
-# Окончательное удаление писем с установленным флагом \Deleted
-mail.expunge()
+        print("------------")
 
 # Закрытие соединения
 mail.logout()
