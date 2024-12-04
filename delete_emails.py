@@ -7,7 +7,7 @@ from email.header import decode_header
 
 
 # Настройки подключения
-IMAP_SERVER = 'infra-mail.ru'  # Замените на ваш IMAP-сервер
+IMAP_SERVER = 'server'  # Замените на ваш IMAP-сервер
 USERNAME = 'name@mail.ru'  # Ваш email
 PASSWORD = 'password'  # Ваш пароль
 
