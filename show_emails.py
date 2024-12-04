@@ -4,9 +4,9 @@ from email.header import decode_header
 from datetime import datetime, timedelta
 
 # Настройки подключения
-IMAP_SERVER = 'infra-mail.ru'  # Замените на ваш IMAP-сервер
-USERNAME = 'kalyuzhny.a@complex1.ru'  # Ваш email
-PASSWORD = '123Qazxsw'  # Ваш пароль
+IMAP_SERVER = 'server'  # Замените на ваш IMAP-сервер
+USERNAME = 'name@mail.ru'  # Ваш email
+PASSWORD = 'password'  # Ваш пароль
 
 
 # Дата для фильтрации писем (до 2024 года)
