@@ -8,8 +8,8 @@ from email.header import decode_header
 
 # Настройки подключения
 IMAP_SERVER = 'infra-mail.ru'  # Замените на ваш IMAP-сервер
-USERNAME = 'kalyuzhny.a@complex1.ru'  # Ваш email
-PASSWORD = '123Qazxsw'  # Ваш пароль
+USERNAME = 'name@mail.ru'  # Ваш email
+PASSWORD = 'password'  # Ваш пароль
 
 # Период для фильтрации писем (например, последние 30 дней)
 #days = 30
